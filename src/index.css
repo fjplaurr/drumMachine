@@ -11,3 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+html, body, #root {
+  height: 100%;
+}
+
+.drum-pad{
+  border: 2px solid rebeccapurple;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px 1px rebeccapurple;
+}
