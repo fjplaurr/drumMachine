@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-
-
+import {AwesomeButton} from "react-awesome-button";
+import 'react-awesome-button/dist/themes/theme-c137.css';
 
 const Pad = (props) => {
   return(
-    <div className='drum-pad'>
+    <AwesomeButton type="primary" className='drum-pad'   >
       {props.param}
-    </div>
+    </AwesomeButton>
   );
 }
 
