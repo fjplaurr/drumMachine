@@ -1,7 +1,7 @@
 .App {
   height: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
@@ -35,4 +35,20 @@
   grid-row-gap: 0.5em;
   justify-items: center; /*stretch?*/
   align-items: center; /*stretch?*/
+}
+
+.drumMachine{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
+  width: 80%;
+  background-color: black;
+  border-radius: 30px;
+  justify-content: space-around;
+}
+
+.onOff{
+  background-color: red;
 }

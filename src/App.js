@@ -34,35 +34,66 @@ class App extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      keyPressed : ''
+      sound : '',
+      number: '',
+      playList: 'first',
+      onOff: 'ON'
     };
+    this.allSounds = '';
 
+    this.importAll = this.importAll.bind(this);    
+    this.changeOnOff = this.changeOnOff.bind(this);
+
+
+    console.log('Constructing');
   }
+
+  importAll (r) {
+    let sounds = {};
+    r.keys().map((item, index) => { sounds[item.replace('./', '')] = r(item); });
+    return sounds;
+  } 
+
+  
+  changeOnOff(){
+    console.log("Changing onOFF");
+    this.setState((state,props) => {
+      return {onOff: state.onOff == 'ON'? 'OFF':'ON'}
+    });
+    console.log('ESTADO ONOFF');
+    console.log(this.state.onOff);
+  }
+
 
   componentWillMount(){
-    function importAll(r) {
-      let images = {};
-      r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
-      return images;
-    }
-    var images = importAll(require.context('./images', false, /\.(png|jpe?g|svg)$/));
+    console.log('Component will mount');
+    this.allSounds = this.importAll(require.context('./sounds', true, /\.(mp3)$/));  //second parameter: -true- to search in subfolders
+    console.log(this.allSounds);
   }
+
   
   render() {
+    console.log('Rendering');
+    console.log(this.allSounds);
     return(
-      <div className="App">
-        <img src={images['aaa.png']}></img>
-        <div className="Grid" id="drum-machine" >
-            <Pad param='Q'></Pad>
-            <Pad param='W'></Pad>
-            <Pad param='E'></Pad>
-            <Pad param='A'></Pad>
-            <Pad param='S'></Pad>
-            <Pad param='D'></Pad>
-            <Pad param='Z'></Pad>
-            <Pad param='X'></Pad>
-            <Pad param='C'></Pad>
+      <div className="App">      
+        <div className="drumMachine">
+          <audio autoPlay src={this.allSounds["firstList/Heater-1.mp3"]}></audio> 
+          <div className="Grid" id="drum-machine">
+              <Pad param='Q'></Pad>
+              <Pad param='W'></Pad>
+              <Pad param='E'></Pad>
+              <Pad param='A'></Pad>
+              <Pad param='S'></Pad>
+              <Pad param='D'></Pad>
+              <Pad param='Z'></Pad>
+              <Pad param='X'></Pad>
+              <Pad param='C'></Pad>
+          </div>3
+          <div onClick={this.changeOnOff}>
+              <AwesomeButton type="primary" className='drum-pad' >{this.state.onOff}</AwesomeButton>
           </div>
+        </div>
       </div>
     );
   }
