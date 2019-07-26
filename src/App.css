@@ -40,15 +40,10 @@
 .drumMachine{
   display: flex;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
   height: 50%;
-  width: 80%;
+  width: 60%;
   background-color: black;
   border-radius: 30px;
   justify-content: space-around;
-}
-
-.onOff{
-  background-color: red;
 }
