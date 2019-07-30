@@ -1,0 +1,127 @@
+[1mdiff --git a/src/App.js b/src/App.js[m
+[1mindex 1ee2016..a52b3f1 100644[m
+[1m--- a/src/App.js[m
+[1m+++ b/src/App.js[m
+[36m@@ -4,6 +4,7 @@[m [mimport {AwesomeButton} from "react-awesome-button";[m
+ import 'react-awesome-button/dist/themes/theme-c137.css';[m
+ import Pad from './childComponents/Pad';[m
+ import VolumeSlider from './childComponents/volumeSlider';[m
+[32m+[m[32mimport { log } from 'util';[m
+ [m
+ [m
+ [m
+[36m@@ -17,16 +18,30 @@[m [mclass App extends React.Component{[m
+       keyPressed: 'Q',[m
+       volume: 50[m
+     };[m
+[32m+[m[32m    this.audioElement = [];[m
+   }[m
+ [m
+   volumeHandler = (event) => {[m
+[31m-    console.log("VOlume handler triggered");[m
+     this.setState({volume:event.target.value});[m
+[32m+[m[32m  }[m
+[32m+[m
+[32m+[m[32m  changeKey = (e) => {[m
+[32m+[m[32m    console.log('Buton pressed.  /n \n');[m
+[32m+[m[32m    if(this.props.paramOnOff === 'OFF' || (e.type === 'keydown' && e.key.toUpperCase() !== this.props.paramLetter)) return;[m
+[32m+[m[32m    console.log(this.audioElement);[m
+[32m+[m[41m    [m
+[32m+[m
+[32m+[m[32m    /*[m
+[32m+[m[32m    this.setState({keyPressed:e.key.toUpperCase()});[m
+[32m+[m[32m    */[m
+     [m
+[32m+[m
+   }[m
+ [m
+[31m-  changeKey = (keyRecieved) => {[m
+[31m-    this.setState({keyPressed:keyRecieved});[m
+[32m+[m[32m  componentDidUpdate(){[m
+[32m+[m[32m    console.log('Componente renderizado \n:');[m
+[32m+[m[41m    [m
+[32m+[m[32m    console.log(this.state.keyPressed);[m
+   }[m
+   [m
+   changeOnOff = () => {[m
+[36m@@ -39,8 +54,7 @@[m [mclass App extends React.Component{[m
+     this.setState((state) => ({[m
+       playList: state.playList === 'BANK 1'? 'BANK 2':'BANK 1'[m
+     }));[m
+[31m-  }[m
+[31m-  [m
+[32m+[m[32m  }[m[41m  [m
+ [m
+   render() {[m
+     console.log('Rendering parent');[m
+[36m@@ -63,15 +77,15 @@[m [mclass App extends React.Component{[m
+             </button>[m
+           </div>[m
+           <div className="Grid" id="drum-machine">[m
+[31m-              <Pad paramLetter='Q' paramOnOff={this.state.onOff} parVolume={this.state.volume} paramSound={this.state.playList === 'BANK 1'? playlistOne[0].url: playlistTwo[0].url} sendKey={this.changeKey}></Pad>[m
+[31m-              <Pad paramLetter='W' paramOnOff={this.state.onOff} parVolume={this.state.volume} paramSound={this.state.playList === 'BANK 1'? playlistOne[1].url: playlistTwo[1].url} sendKey={this.changeKey}></Pad>[m
+[31m-              <Pad paramLetter='E' paramOnOff={this.state.onOff} parVolume={this.state.volume} paramSound={this.state.playList === 'BANK 1'? playlistOne[2].url: playlistTwo[2].url} sendKey={this.changeKey}></Pad>[m
+[31m-              <Pad paramLetter='A' paramOnOff={this.state.onOff} parVolume={this.state.volume} paramSound={this.state.playList === 'BANK 1'? playlistOne[3].url: playlistTwo[3].url} sendKey={this.changeKey}></Pad>[m
+[31m-              <Pad paramLetter='S' paramOnOff={this.state.onOff} parVolume={this.state.volume} paramSound={this.state.playList === 'BANK 1'? playlistOne[4].url: playlistTwo[4].url} sendKey={this.changeKey}></Pad>[m
+[31m-              <Pad paramLetter='D' paramOnOff={this.state.onOff} parVolume={this.state.volume} paramSound={this.state.playList === 'BANK 1'? playlistOne[5].url: playlistTwo[5].url} sendKey={this.changeKey}></Pad>[m
+[31m-              <Pad paramLetter='Z' paramOnOff={this.state.onOff} parVolume={this.state.volume} paramSound={this.state.playList === 'BANK 1'? playlistOne[6].url: playlistTwo[6].url} sendKey={this.changeKey}></Pad>[m
+[31m-              <Pad paramLetter='X' paramOnOff={this.state.onOff} parVolume={this.state.volume} paramSound={this.state.playList === 'BANK 1'? playlistOne[7].url: playlistTwo[7].url} sendKey={this.changeKey}></Pad>[m
+[31m-              <Pad paramLetter='C' paramOnOff={this.state.onOff} parVolume={this.state.volume} paramSound={this.state.playList === 'BANK 1'? playlistOne[8].url: playlistTwo[8].url} sendKey={this.changeKey}></Pad>[m
+[32m+[m[32m              <Pad paramLetter='Q' paramOnOff={this.state.onOff} parVolume={this.state.volume} paramSound={this.state.playList === 'BANK 1'? playlistOne[0].url: playlistTwo[0].url} sendKey={this.changeKey} audioRef={elem=>this.audioElement[0]=elem}></Pad>[m
+[32m+[m[32m              <Pad paramLetter='W' paramOnOff={this.state.onOff} parVolume={this.state.volume} paramSound={this.state.playList === 'BANK 1'? playlistOne[1].url: playlistTwo[1].url} sendKey={this.changeKey} audioRef={elem=>this.audioElement[1]=elem}></Pad>[m
+[32m+[m[32m              <Pad paramLetter='E' paramOnOff={this.state.onOff} parVolume={this.state.volume} paramSound={this.state.playList === 'BANK 1'? playlistOne[2].url: playlistTwo[2].url} sendKey={this.changeKey} audioRef={elem=>this.audioElement[2]=elem}></Pad>[m
+[32m+[m[32m              <Pad paramLetter='A' paramOnOff={this.state.onOff} parVolume={this.state.volume} paramSound={this.state.playList === 'BANK 1'? playlistOne[3].url: playlistTwo[3].url} sendKey={this.changeKey} audioRef={elem=>this.audioElement[3]=elem}></Pad>[m
+[32m+[m[32m              <Pad paramLetter='S' paramOnOff={this.state.onOff} parVolume={this.state.volume} paramSound={this.state.playList === 'BANK 1'? playlistOne[4].url: playlistTwo[4].url} sendKey={this.changeKey} audioRef={elem=>this.audioElement[4]=elem}></Pad>[m
+[32m+[m[32m              <Pad paramLetter='D' paramOnOff={this.state.onOff} parVolume={this.state.volume} paramSound={this.state.playList === 'BANK 1'? playlistOne[5].url: playlistTwo[5].url} sendKey={this.changeKey} audioRef={elem=>this.audioElement[5]=elem}></Pad>[m
+[32m+[m[32m              <Pad paramLetter='Z' paramOnOff={this.state.onOff} parVolume={this.state.volume} paramSound={this.state.playList === 'BANK 1'? playlistOne[6].url: playlistTwo[6].url} sendKey={this.changeKey} audioRef={elem=>this.audioElement[6]=elem}></Pad>[m
+[32m+[m[32m              <Pad paramLetter='X' paramOnOff={this.state.onOff} parVolume={this.state.volume} paramSound={this.state.playList === 'BANK 1'? playlistOne[7].url: playlistTwo[7].url} sendKey={this.changeKey} audioRef={elem=>this.audioElement[7]=elem}></Pad>[m
+[32m+[m[32m              <Pad paramLetter='C' paramOnOff={this.state.onOff} parVolume={this.state.volume} paramSound={this.state.playList === 'BANK 1'? playlistOne[8].url: playlistTwo[8].url} sendKey={this.changeKey} audioRef={elem=>this.audioElement[8]=elem}></Pad>[m
+           </div>         [m
+         </div>[m
+       </div>[m
+[1mdiff --git a/src/childComponents/Pad.js b/src/childComponents/Pad.js[m
+[1mindex 3f2aa25..de8aed1 100644[m
+[1m--- a/src/childComponents/Pad.js[m
+[1m+++ b/src/childComponents/Pad.js[m
+[36m@@ -2,34 +2,13 @@[m [mimport React from 'react';[m
+ [m
+ [m
+ [m
+[31m-class Pad extends React.Component{[m
+[31m-  constructor(props){[m
+[31m-    super(props);[m
+[31m-    this.audio = React.createRef();[m
+[31m-  }[m
+[31m-[m
+[31m-  makeSound = (e) =>{[m
+[31m-    if(this.props.paramOnOff === 'OFF' || (e.type === 'keydown' && e.key.toUpperCase() !== this.props.paramLetter)) return;[m
+[31m-    this.props.sendKey(this.props.paramLetter);[m
+[31m-    this.audio.current.currentTime = 0;[m
+[31m-    this.audio.current.volume = this.props.parVolume/100;[m
+[31m-    this.audio.current.play();[m
+[31m-  }[m
+[31m-[m
+[31m-  componentWillMount(){[m
+[31m-    document.addEventListener("keydown",this.makeSound.bind(this));[m
+[31m-  }[m
+[31m-[m
+[31m-  render() {[m
+[31m-    console.log("Rendering child");[m
+[31m-    return([m
+[31m-      <div onClick={this.makeSound}  className='drum-pad'>[m
+[31m-        <audio src={this.props.paramSound} className="aud" ref={this.audio}></audio> [m
+[31m-        <button>{this.props.paramLetter}</button>[m
+[31m-        {/*<AwesomeButton type="primary" >{this.props.paramLetter}</AwesomeButton>*/}[m
+[31m-      </div>[m
+[31m-    );[m
+[31m-  }[m
+[32m+[m[32mconst Pad = (props) =>{[m
+[32m+[m[32m  return([m
+[32m+[m[32m    <div onClick={props.sendKey} className='drum-pad'>[m
+[32m+[m[32m      <audio src={props.paramSound} className="aud" ref={props.audioRef}></audio>[m[41m [m
+[32m+[m[32m      <button id='lmao' value={props.paramLetter}>{props.paramLetter}</button>[m
+[32m+[m[32m    </div>[m
+[32m+[m[32m  );[m
+ }[m
+ [m
+ [m
