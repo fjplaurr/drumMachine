@@ -19,33 +19,46 @@ class App extends React.Component{
     this.aud = [];
     this.keyValidator = ['Q','W','E','A','S','D','Z','X','C'];
   }
+  
 
   componentWillMount(){
     document.addEventListener("keydown",this.makeSoundKeyDown.bind(this));
   }
 
+
   volumeHandler = (event) => {
     this.setState({volume:event.target.value});
   }
 
+
   makeSound = (e) => {    
-    var aud = e.type === 'keydown'?  this.aud.filter(item => e.key.toUpperCase()===item.id)[0]: e.currentTarget.firstChild;
-    aud.currentTime = 0;
+    var aud = e.type === 'keydown'?  document.querySelector(`.aud[id=${e.key.toUpperCase()}]`) : e.currentTarget.querySelector('audio');
+    aud.currentTime = 0;  
     aud.volume = this.state.volume/100;
-    aud.play();
+    aud.play(); 
+    var aud = e.type === 'keydown'?  this.setState({keyPressed: e.key.toUpperCase()}): this.setState({keyPressed: e.currentTarget.querySelector('button').value});
   }
 
-  makeSoundClick = (e) => {
+
+  makeSoundClick = (index, e) => {
     if(this.state.onOff === 'OFF') return;
-    this.setState({keyPressed: e.currentTarget.lastChild.value});
-    this.makeSound(e);
+    var aud = e.currentTarget.querySelector('audio');
+    aud.currentTime = 0;  
+    aud.volume = this.state.volume/100;
+    aud.play(); 
+    this.setState({keyPressed: e.currentTarget.querySelector('button').value});
   }
+
 
   makeSoundKeyDown = (e) => {
     if(this.state.onOff === 'OFF' || this.keyValidator.indexOf(e.key.toUpperCase()) === -1) return;
+    var aud = document.querySelector(`.aud[id=${e.key.toUpperCase()}]`);
+    aud.currentTime = 0;  
+    aud.volume = this.state.volume/100;
+    aud.play(); 
     this.setState({keyPressed: e.key.toUpperCase()});
-    this.makeSound(e);
   }
+
   
   changeOnOff = () => {
     this.setState((state) => ({
@@ -53,6 +66,7 @@ class App extends React.Component{
     }));
   }
 
+  
   changePlayList = () => {
     this.setState((state) => ({
       playList: state.playList === 'BANK 1'? 'BANK 2':'BANK 1'
@@ -61,6 +75,7 @@ class App extends React.Component{
   
 
   render() {
+    console.log("Rendering App");
     return(
       <div className="App">      
         <div className="drumMachine">
@@ -77,12 +92,12 @@ class App extends React.Component{
           <div className="Grid" id="drum-machine">
             {
               this.state.playList === 'BANK 1'? 
-                playlistOne.map((val,index) => {
-                  return <Pad parLetter={val.key} parOnOff={this.state.onOff} parVolume={this.state.volume} parSound={val.url} sendKey={this.makeSoundClick} audioRef={(audioFromChild)=>this.aud[index]=audioFromChild}></Pad>
-                }
-                ): playlistTwo.map((val,index) => {
-                return <Pad parLetter={val.key} parOnOff={this.state.onOff} parVolume={this.state.volume} parSound={val.url} sendKey={this.makeSoundClick} audioRef={(audioFromChild)=>this.aud[index]=audioFromChild}></Pad>
-              })
+                playlistOne.map((val,index) => 
+                  <Pad parLetter={val.key} parOnOff={this.state.onOff} parVolume={this.state.volume} parSound={val.url} sendKey={this.makeSoundClick.bind(this,index)}></Pad>
+                ): 
+                playlistTwo.map((val,index) =>
+                  <Pad parLetter={val.key} parOnOff={this.state.onOff} parVolume={this.state.volume} parSound={val.url} sendKey={this.makeSoundClick.bind(this,index)}></Pad>
+                )
             }            
           </div>         
         </div>
