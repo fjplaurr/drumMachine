@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import 'react-awesome-button/dist/themes/theme-c137.css';
 import Pad from './childComponents/Pad';
 import VolumeSlider from './childComponents/volumeSlider';
 import OnOff from './childComponents/onOff';
-
+import DrumVisualizer from './childComponents/drumVisualizer';
+import PlayListSelector from './childComponents/playlistSelector';
 
 
 class App extends React.Component{
@@ -12,91 +12,76 @@ class App extends React.Component{
     super(props);
     this.state = {
       playList: 'BANK 1',
-      onOff: 'ON',
-      keyPressed: 'Q',
+      onOff: true,
+      keyPressed: '',
       volume: 50
     };
     this.aud = [];
     this.keyValidator = ['Q','W','E','A','S','D','Z','X','C'];
+    this.firstPlayList = playlistOne;
+    this.secondPlayList = playlistTwo; 
   }
-  
 
   componentWillMount(){
     document.addEventListener("keydown",this.makeSoundKeyDown.bind(this));
   }
 
-
   volumeHandler = (event) => {
     this.setState({volume:event.target.value});
   }
 
-
-  makeSound = (e) => {    
-    var aud = e.type === 'keydown'?  document.querySelector(`.aud[id=${e.key.toUpperCase()}]`) : e.currentTarget.querySelector('audio');
-    aud.currentTime = 0;  
-    aud.volume = this.state.volume/100;
-    aud.play(); 
-    var aud = e.type === 'keydown'?  this.setState({keyPressed: e.key.toUpperCase()}): this.setState({keyPressed: e.currentTarget.querySelector('button').value});
-  }
-
-
   makeSoundClick = (index, e) => {
-    if(this.state.onOff === 'OFF') return;
+    if(!this.state.onOff) return;
     var aud = e.currentTarget.querySelector('audio');
     aud.currentTime = 0;  
     aud.volume = this.state.volume/100;
-    aud.play(); 
-    this.setState({keyPressed: e.currentTarget.querySelector('button').value});
+    aud.play();
+    this.setState({keyPressed: e.currentTarget.value});  
   }
-
-
+  
   makeSoundKeyDown = (e) => {
-    if(this.state.onOff === 'OFF' || this.keyValidator.indexOf(e.key.toUpperCase()) === -1) return;
+    if(!this.state.onOff || this.keyValidator.indexOf(e.key.toUpperCase()) === -1) return;
     var aud = document.querySelector(`.aud[id=${e.key.toUpperCase()}]`);
     aud.currentTime = 0;  
     aud.volume = this.state.volume/100;
     aud.play(); 
     this.setState({keyPressed: e.key.toUpperCase()});
   }
-
   
   changeOnOff = () => {
+    console.log("onofffffffffffffffffffffff");
     this.setState((state) => ({
-      onOff: state.onOff === 'ON'? 'OFF':'ON'
+      onOff: !state.onOff,
+      keyPressed: ''
     }));
   }
 
-  
   changePlayList = () => {
     this.setState((state) => ({
       playList: state.playList === 'BANK 1'? 'BANK 2':'BANK 1'
     }));
   }  
   
-
   render() {
     console.log("Rendering App");
+    
     return(
-      <div className="App">      
+      <div className="App">  
         <div className="drumMachine">
           <div className="Controls">
+          <OnOff parOnOff={this.state.onOff} parChangeOnOff={this.changeOnOff}>{this.state.onOff}</OnOff>
           <VolumeSlider parVolume={this.state.volume} changeVol={this.volumeHandler}></VolumeSlider>
-            <OnOff parOnOff={this.state.onOff} parChangeOnOff={this.changeOnOff}>{this.state.onOff}</OnOff>
-            <div onClick={this.changePlayList}>
-              <button>{this.state.playList}</button>
-            </div>
-            <button>
-              {this.state.playList === 'BANK 1'? playlistOne.filter(x => x.key === this.state.keyPressed)[0].id : playlistTwo.filter(x => x.key === this.state.keyPressed)[0].id}
-            </button>
+          <PlayListSelector playList={this.state.playList} changePlaylist={this.changePlayList}></PlayListSelector>
+          <DrumVisualizer playlist={this.state.playList} keyPressed={this.state.keyPressed} firstPlayList={this.firstPlayList} secondPlayList={this.secondPlayList} parVolume={this.state.volume} parOnOff={this.state.onOff}></DrumVisualizer>          
           </div>
           <div className="Grid" id="drum-machine">
             {
               this.state.playList === 'BANK 1'? 
                 playlistOne.map((val,index) => 
-                  <Pad parLetter={val.key} parOnOff={this.state.onOff} parVolume={this.state.volume} parSound={val.url} sendKey={this.makeSoundClick.bind(this,index)}></Pad>
+                  <Pad parLetter={val.key} parVolume={this.state.volume} parSound={val.url} sendKey={this.makeSoundClick.bind(this,index)} key={index} keyActive={this.state.keyPressed} parOnOff={this.state.onOff}></Pad>
                 ): 
                 playlistTwo.map((val,index) =>
-                  <Pad parLetter={val.key} parOnOff={this.state.onOff} parVolume={this.state.volume} parSound={val.url} sendKey={this.makeSoundClick.bind(this,index)}></Pad>
+                  <Pad parLetter={val.key} parVolume={this.state.volume} parSound={val.url} sendKey={this.makeSoundClick.bind(this,index)} key={index} keyActive={this.state.keyPressed} parOnOff={this.state.onOff}></Pad>
                 )
             }            
           </div>         
@@ -105,7 +90,6 @@ class App extends React.Component{
     );
   }
 }
-
 
 
 const playlistOne = [
@@ -188,7 +172,6 @@ const playlistTwo = [
     url: 'https://s3.amazonaws.com/freecodecamp/drums/Brk_Snr.mp3'
   }
 ];
-
 
 
 export default App;

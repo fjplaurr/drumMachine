@@ -1,12 +1,10 @@
 import React from 'react';
+import 'react-input-range/lib/css/index.css';
 
 const VolumeSlider = (props) => {
   console.log("Rendering VolumeSlider");
     return(
-      <div>
-        <input type='range' min='0'  max='100' onClick={props.changeVol} className="flotof"></input>
-        {props.parVolume}
-      </div>    
+      <input type="range" min='0' max='100' onChange={props.changeVol}></input>
     )
 }
 

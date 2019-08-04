@@ -1,10 +1,7 @@
 import React from 'react';
 
 
-const OnOff = (props) => {
-    return(
-        <button onClick={props.parChangeOnOff}>{props.parOnOff}</button>
-    )
-}
+const OnOff = (props) => <button className={`powerButton ${props.parOnOff? 'powerOn':'powerOff'}`} onClick={props.parChangeOnOff}><i className="fas fa-power-off"/></button>
+
 
 export default OnOff;

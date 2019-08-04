@@ -1,14 +1,11 @@
 import React from 'react';
 
 
-
-const Pad = (props) =>{
-  console.log("Rendering Pad")
+const Pad = (props)=>{
   return(
-    <div  onClick={props.sendKey} className='drum-pad' tabIndex='0'>
-      <audio src={props.parSound} className="aud"  id={props.parLetter}></audio> 
-      <button id='lmao' value={props.parLetter}>{props.parLetter}</button>
-    </div>
+    <button  onClick={props.sendKey} className={props.keyActive === props.parLetter && props.parOnOff? 'drum-pad drumOn drumActivated': !props.parOnOff? 'drum-pad drumOff': 'drum-pad drumOn'} value={props.parLetter}> {props.parLetter}
+      <audio src={props.parSound} className="aud" id={props.parLetter}></audio> 
+    </button>
   );
 }
 
