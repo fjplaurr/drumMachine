@@ -6,15 +6,15 @@ const DrumVisualizer = (props) => {
         
         return(
             <div className="drumVisualizer">
-                <div>
+                <div className='drumVisLeft'>
                 {props.playlist === 'BANK 1' && props.keyPressed !== ''? 
-                    props.firstPlayList.filter(x => x.key === props.keyPressed)[0].id :
+                    props.firstPlayList.filter(x => x.key === props.keyPressed)[0].id.toUpperCase() :
                         props.playlist === 'BANK 2' && props.keyPressed !== ''? 
-                            props.secondPlayList.filter(x => x.key === props.keyPressed)[0].id: 
-                                ''  
+                            props.secondPlayList.filter(x => x.key === props.keyPressed)[0].id.toUpperCase(): 
+                                ''
                 }
                 </div>
-                <div>{props.parOnOff? `Vol:${props.parVolume}`: ''}</div>              
+                <div className='drumVisRight'>{props.parOnOff? `VOL:${props.parVolume}`: ''}</div>              
             </div>
         )    
 }

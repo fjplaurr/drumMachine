@@ -1,90 +1,109 @@
 import React from 'react';
-import './App.css';
 import Pad from './childComponents/Pad';
 import VolumeSlider from './childComponents/volumeSlider';
 import OnOff from './childComponents/onOff';
 import DrumVisualizer from './childComponents/drumVisualizer';
 import PlayListSelector from './childComponents/playlistSelector';
+import LogoHeader from './childComponents/LogoHeader';
+import './App.css';
+import './childComponents/volumeSlider.css';
 
 
-class App extends React.Component{
-  constructor(props){
+class App extends React.Component {
+  constructor(props) {
     super(props);
     this.state = {
       playList: 'BANK 1',
-      onOff: true,
+      onOff: false,
       keyPressed: '',
       volume: 50
     };
     this.aud = [];
-    this.keyValidator = ['Q','W','E','A','S','D','Z','X','C'];
+    this.keyValidator = ['Q', 'W', 'E', 'A', 'S', 'D', 'Z', 'X', 'C'];
     this.firstPlayList = playlistOne;
-    this.secondPlayList = playlistTwo; 
+    this.secondPlayList = playlistTwo;
   }
 
-  componentWillMount(){
-    document.addEventListener("keydown",this.makeSoundKeyDown.bind(this));
+  componentWillMount() {
+    document.addEventListener("keydown", this.makeSoundKeyDown.bind(this));
   }
 
   volumeHandler = (event) => {
-    this.setState({volume:event.target.value});
+    this.setState({ volume: event.target.value });
   }
 
+  handleChange = newValue => {
+    this.setState({
+      volume: newValue
+    });
+  };
+
   makeSoundClick = (index, e) => {
-    if(!this.state.onOff) return;
+    if (!this.state.onOff) return;
     var aud = e.currentTarget.querySelector('audio');
-    aud.currentTime = 0;  
-    aud.volume = this.state.volume/100;
+    aud.currentTime = 0;
+    aud.volume = this.state.volume / 100;
     aud.play();
-    this.setState({keyPressed: e.currentTarget.value});  
+    this.setState({ keyPressed: e.currentTarget.value });
   }
-  
+
   makeSoundKeyDown = (e) => {
-    if(!this.state.onOff || this.keyValidator.indexOf(e.key.toUpperCase()) === -1) return;
+    if (!this.state.onOff || this.keyValidator.indexOf(e.key.toUpperCase()) === -1) return;
     var aud = document.querySelector(`.aud[id=${e.key.toUpperCase()}]`);
-    aud.currentTime = 0;  
-    aud.volume = this.state.volume/100;
-    aud.play(); 
-    this.setState({keyPressed: e.key.toUpperCase()});
+    aud.currentTime = 0;
+    aud.volume = this.state.volume / 100;
+    aud.play();
+    this.setState({ keyPressed: e.key.toUpperCase() });
   }
-  
+
   changeOnOff = () => {
-    console.log("onofffffffffffffffffffffff");
     this.setState((state) => ({
       onOff: !state.onOff,
       keyPressed: ''
     }));
   }
 
-  changePlayList = () => {
-    this.setState((state) => ({
-      playList: state.playList === 'BANK 1'? 'BANK 2':'BANK 1'
+  changePlayList = (event) => {
+    const playL = event.currentTarget.innerHTML;
+    this.setState(() => ({
+      playList: playL
     }));
-  }  
+  }
+
+  render() {console.log('ñpwefe');
   
-  render() {
-    console.log("Rendering App");
+    console.log(this.state.playList);
     
-    return(
-      <div className="App">  
+    return (
+      <div className="App">
         <div className="drumMachine">
-          <div className="Controls">
-          <OnOff parOnOff={this.state.onOff} parChangeOnOff={this.changeOnOff}>{this.state.onOff}</OnOff>
-          <VolumeSlider parVolume={this.state.volume} changeVol={this.volumeHandler}></VolumeSlider>
-          <PlayListSelector playList={this.state.playList} changePlaylist={this.changePlayList}></PlayListSelector>
-          <DrumVisualizer playlist={this.state.playList} keyPressed={this.state.keyPressed} firstPlayList={this.firstPlayList} secondPlayList={this.secondPlayList} parVolume={this.state.volume} parOnOff={this.state.onOff}></DrumVisualizer>          
+          <div className='divHeaderControls'>
+            <div className='divHeader'>
+              <OnOff parOnOff={this.state.onOff} parChangeOnOff={this.changeOnOff}>{this.state.onOff}</OnOff>
+              <LogoHeader></LogoHeader>
+            </div>
+            <div className="Controls">
+              <div className='divPlaySelectors'>
+               <PlayListSelector parOnOff={this.state.onOff} playList='BANK 1' changePlaylist={this.changePlayList} playListActive={this.state.playList}></PlayListSelector>
+               <PlayListSelector parOnOff={this.state.onOff} playList='BANK 2' changePlaylist={this.changePlayList} playListActive={this.state.playList}></PlayListSelector>
+              </div>
+              <VolumeSlider parVolume={this.state.volume} changeVol={this.volumeHandler}></VolumeSlider>
+              <DrumVisualizer playlist={this.state.playList} keyPressed={this.state.keyPressed} firstPlayList={this.firstPlayList} secondPlayList={this.secondPlayList} parVolume={this.state.volume} parOnOff={this.state.onOff}></DrumVisualizer>
+            </div>
           </div>
+          
           <div className="Grid" id="drum-machine">
             {
-              this.state.playList === 'BANK 1'? 
-                playlistOne.map((val,index) => 
-                  <Pad parLetter={val.key} parVolume={this.state.volume} parSound={val.url} sendKey={this.makeSoundClick.bind(this,index)} key={index} keyActive={this.state.keyPressed} parOnOff={this.state.onOff}></Pad>
-                ): 
-                playlistTwo.map((val,index) =>
-                  <Pad parLetter={val.key} parVolume={this.state.volume} parSound={val.url} sendKey={this.makeSoundClick.bind(this,index)} key={index} keyActive={this.state.keyPressed} parOnOff={this.state.onOff}></Pad>
+              this.state.playList === 'BANK 1' ?
+                playlistOne.map((val, index) =>
+                  <Pad parLetter={val.key} parVolume={this.state.volume} parSound={val.url} sendKey={this.makeSoundClick.bind(this, index)} key={index} keyActive={this.state.keyPressed} parOnOff={this.state.onOff}></Pad>
+                ) :
+                playlistTwo.map((val, index) =>
+                  <Pad parLetter={val.key} parVolume={this.state.volume} parSound={val.url} sendKey={this.makeSoundClick.bind(this, index)} key={index} keyActive={this.state.keyPressed} parOnOff={this.state.onOff}></Pad>
                 )
-            }            
-          </div>         
+            }
+          
+          </div>
         </div>
       </div>
     );
