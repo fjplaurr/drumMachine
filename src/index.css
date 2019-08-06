@@ -7,3 +7,15 @@ html, body, #root {
   height: 100%;
 }
 
+:root{
+  --pad-first-color: rgb(255,90,255);
+  --pad-second-color: rgb(50,200,255);
+  --pad-third-color: rgb(255,80,110);
+  --main-black: rgb(10, 10, 10);  
+  --main-dark-gray: rgb(50,50,50);
+  --light-gray: rgb(80,80,80); 
+  --screen-light-green: rgb(45,60,45);
+  --scren-dark-green: rgb(30, 45, 30);
+  --screen-playlist-orange: rgb(240, 100, 20);
+  --on-color: rgb(50, 200, 100);
+} 
