@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "digital-7";
+  src: url("https://res.  udinary.com/fjplaurr/raw/upload/v1564850933/Web%20Development/Fonts/digital-7/digital-7_cv8j5n.ttf");
+}
+
+.display{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: solid var(--blackColor);
+  border-width: 0.3rem 0.5rem;
+  outline: 0.1rem solid var(--darkGrayColor);
+  background: linear-gradient(to bottom right, var(--screenDarkGreenColor), var(--screenLightGreenColor));
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: 1rem; 
+  box-shadow: 0.2rem 0.2rem 0.3rem black;
+  box-sizing: border-box;
+  min-height: 5rem;
+}

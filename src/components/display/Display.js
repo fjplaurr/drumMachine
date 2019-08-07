@@ -1,11 +1,11 @@
 import React from 'react';
 
 
-const DrumVisualizer = (props) => {
-        console.log('Rendering DrumVisualizer');       
+const Display = (props) => {
+        console.log('Rendering Display');       
         return(
-            <div className="drumVisualizer">
-                <div className='drumVisLeft'>
+            <div className="display">
+                <div>
                 {props.playlist === 'BANK 1' && props.keyPressed !== ''? 
                     props.firstPlayList.filter(x => x.key === props.keyPressed)[0].name.toUpperCase() :
                         props.playlist === 'BANK 2' && props.keyPressed !== ''? 
@@ -13,11 +13,11 @@ const DrumVisualizer = (props) => {
                                 ''
                 }
                 </div>
-                <div className='drumVisRight'>{props.parOnOff? `VOL:${props.parVolume}`: ''}</div>              
+                <div>{props.parOnOff? `VOL:${props.parVolume}`: ''}</div>              
             </div>
         )    
 }
 
 
-export default DrumVisualizer;
+export default Display;
 

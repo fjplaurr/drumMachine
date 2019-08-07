@@ -1,209 +1,59 @@
-@font-face {
-  font-family: "digital-7";
-  src: url("https://res.  udinary.com/fjplaurr/raw/upload/v1564850933/Web%20Development/Fonts/digital-7/digital-7_cv8j5n.ttf");
-}
-
 .App {
   height: 100%;
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
-}
-
-.Controls{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  margin: 0px 0.5rem 0px 0px;
-}
-
-.Grid{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /*Same as 1fr 1fr 1fr*/
-  grid-template-rows: repeat(3,1fr);
-  grid-column-gap: 0.3rem;
-  grid-row-gap: 0.3rem;
-  justify-items: center;
-  align-items: center;
-  margin: 0.5rem 0px 1rem 0px;
+  flex-wrap: wrap;
 }
 
 .drumMachine{
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-  justify-content: space-around;
-  background: linear-gradient(to bottom right, var(--main-black) 40%, var(--main-dark-gray), var(--light-gray));
-  border-bottom: 0.2rem solid var(--main-dark-gray);
-  border-right: 0.2rem solid var(--main-dark-gray);
-  border-left: 0.2rem solid var(--main-black);
-  border-top: 0.2rem solid var(--main-black);
-  padding: 0px 0.6rem;
+  flex-wrap: wrap;
+  background: linear-gradient(to bottom right, var(--blackColor) 40%, var(--darkGrayColor), var(--lightGrayColor));
+  border-bottom: 0.2rem solid var(--darkGrayColor);
+  border-right: 0.2rem solid var(--darkGrayColor);
+  border-left: 0.2rem solid var(--blackColor);
+  border-top: 0.2rem solid var(--blackColor);
   border-radius: 1rem;
-  box-shadow: 0.05rem 0.05rem 0.3rem black;
+  box-shadow: 0.2rem 0.2rem 0.3rem black;
+  margin: 4rem;
 }
 
 .divHeaderControls{
   display: flex;
   flex-direction: column;
-  justify-content: space-between; 
-  margin: 0.5rem 0.8rem 1rem 0px;
-}
-
-.drum-pad{
-  cursor: pointer;
-  width: 2.5rem;
-  height: 2.5rem;
-  text-align: center;
-  padding: 0px;
-  background-color: var(--main-black);
-  outline: none;
-  border: 0.1rem solid var(--main-dark-gray);
-  color: var(--light-gray);
-  font-family: 'Orbitron', sans-serif;
-  font-size: 0.5rem;
-}
-
-.drum-pad.drumOn:nth-child(3n+1){
-  box-shadow: 0.03rem 0.03rem 0.3rem black, 0px 0px 0.1rem 0.01rem var(--pad-first-color);
-  transition: box-shadow 1s;
-}
-
-.drum-pad.drumOn.drumActivated:nth-child(3n+1){
-  box-shadow: 0.03rem 0.03rem 0.3rem black, 0px 0px 0.4rem 0.02rem var(--pad-first-color);
-  color: var(--pad-first-color);
-  transition: box-shadow 0s;
-}
-
-.drum-pad.drumOn:nth-child(3n+2){
-  box-shadow: 0.03rem 0.03rem 0.3rem black, 0px 0px 0.1rem 0.01rem var(--pad-second-color);
-  transition: box-shadow 1s;
-}
-
-.drum-pad.drumOn.drumActivated:nth-child(3n+2){
-  box-shadow: 0.03rem 0.03rem 0.3rem black, 0px 0px 0.4rem 0.02rem var(--pad-second-color);
-  color: var(--pad-second-color);
-  transition: box-shadow 0s;
-}
-
-.drum-pad.drumOn:nth-child(3n+3){
-  box-shadow: 0.03rem 0.03rem 0.3rem black, 0px 0px 0.1rem 0.01rem var(--pad-third-color);
-  transition: box-shadow 1s;
-}
-
-.drum-pad.drumActivated.drumOn:nth-child(3n+3){
-  box-shadow: 0.03rem 0.03rem 0.3rem black, 0px 0px 0.4rem 0.02rem var(--pad-third-color);
-  color: var(--pad-third-color);
-  transition: box-shadow 0s;
-}
-
-.drumOff{
-  box-shadow: 0.03rem 0.03rem 0.3rem black;
-  transition: box-shadow 1s;
-}
-
-.drumVisualizer{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  border: solid var(--main-black);
-  border-width: 0.3rem 0.5rem;
-  outline: 0.1rem solid var(--main-dark-gray);
-  background: linear-gradient(to bottom right, var(--scren-dark-green), var(--screen-light-green));
-  font-family: 'Orbitron', sans-serif;
-  font-size: 0.5rem;
-  text-align: center;
-  margin-top: 0.5rem; 
-  height: 1.4rem;
-  box-shadow: 0.03rem 0.03rem 0.3rem black;
-}
-
-.divPlaySelectors{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-}
-
-.butPlayList{
-  background-color: var(--main-black);
-  outline: none;
-  border: 0.1rem solid var(--main-dark-gray);
-  cursor: pointer;
-  width: 45%;
-  height: 1.5rem;
-  text-align: center;
-  padding: 0px;
-  color: var(--light-gray);
-  margin: 0.1rem 0px;
-  font-family: 'Orbitron', sans-serif;
-  transition: box-shadow 1s, color 1s;
-  box-shadow: 0.03rem 0.03rem 0.3rem black;
-}
-
-.butPlayList.plListActive{
-  box-shadow: 0.03rem 0.03rem 0.3rem black, 0px 0px 0.3rem 0.02rem var(--pad-second-color);
-  color: var(--pad-second-color);
-  transition: box-shadow 1s, color 1s;
-}
-
-
-.butPlayList.plListDisabled{
-  box-shadow: 0.03rem 0.03rem 0.3rem black, 0px 0px 0.1rem 0.01rem var(--pad-second-color);
-  transition: box-shadow 1s;
+  margin: 2rem;
+  flex: 1 0 auto; 
 }
 
 .divHeader{
   display: flex;
   flex-direction: row;
-  justify-content: left;
   align-items: center;
-  margin-bottom: 1rem;
 }
 
-.headerLogo{
-  margin: 0px 0px 0px 0.5rem;
-  color: var(--pad-third-color);
-  font-size: 1rem;
+.Controls{
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  flex: 1 0 auto;
 }
 
-.headerLogo > span{
-  color: whitesmoke;
+.Grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(5rem,1fr)); /*Same as 1fr 1fr 1fr*/
+  grid-gap: 1rem;
+  margin: 2rem;
+  flex: 1 0 auto;
 }
 
-
-.powerButton{
-  border: none;
-  outline:none;
-  cursor: pointer;
-  text-shadow: 0 0 0.1rem;   
-  background-color: var(--main-black);
-  border: 0.1rem solid var(--main-dark-gray);
-  height: 1.2rem;
-  width: 1.2rem;
-  text-align: center;
-  padding: 0px;
-  margin: 0.1rem 0px;
+.divPlaySelectors{
+  display: flex;
+  flex: 1 0 auto;
 }
 
-.powerOn{
-  color: var(--on-color);
-  box-shadow: 0px 0px 0.1rem 0.01rem var(--on-color);
-  transition: box-shadow 1s, color 1s;
-}
-
-.powerOff{
-  color: var(--main-dark-gray);
-  box-shadow: none;
-  transition: box-shadow 1s, 1s;
-}
-
-.drumVisLeft{
-  margin: auto 0px auto 0.2rem;
-}
-
-.drumVisRight{
-  margin: auto 0.2rem auto 0px;
-}
+.divPlaySelectors > *{
+  flex: 1 0 auto;
+} 

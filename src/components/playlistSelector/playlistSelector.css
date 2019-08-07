@@ -1,0 +1,32 @@
+.butPlayList{
+    background-color: var(--blackColor);
+    outline: none;
+    border: 0.1rem solid var(--darkGrayColor);
+    cursor: pointer;
+    text-align: center;
+    color: var(--lightGrayColor);
+    font-family: 'Orbitron', sans-serif;
+    transition: box-shadow 1s, color 1s;
+    box-shadow: 0.12rem 0.12rem 0.3rem black;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+}
+
+.butPlayList:first-child{
+    margin-right: 1rem;
+}
+
+.butPlayList:last-child{
+    margin-left: 1rem;
+}
+
+.butPlayList.plListActive{
+    box-shadow: 0.12rem 0.12rem 0.3rem black, 0px 0px 0.3rem 0.02rem var(--padSecondColor);
+    color: var(--padSecondColor);
+    transition: box-shadow 1s, color 1s;
+}
+
+.butPlayList.plListDisabled{
+    box-shadow: 0.12rem 0.12rem 0.3rem black, 0px 0px 0.1rem 0.01rem var(--padSecondColor);
+    transition: box-shadow 1s;
+}

@@ -1,13 +1,17 @@
 import React from 'react';
-import Pad from './components/Pad';
-import VolumeSlider from './components/volumeSlider';
-import OnOff from './components/onOff';
-import DrumVisualizer from './components/drumVisualizer';
-import PlayListSelector from './components/playlistSelector';
-import LogoHeader from './components/LogoHeader';
+import Pad from './components/pad/Pad';
+import VolumeSlider from './components/volumeSlider/VolumeSlider';
+import PowerOnOff from './components/powerOnOff/PowerOnOff';
+import Display from './components/display/Display';
+import PlayListSelector from './components/playlistSelector/PlaylistSelector';
+import LogoHeader from './components/logoHeader/LogoHeader';
 import './App.css';
-import './components/volumeSlider.css';
-import { stat } from 'fs';
+import './components/volumeSlider/volumeSlider.css';
+import './components/display/display.css';
+import './components/pad/pad.css';
+import './components/powerOnOff/powerOnOff.css';
+import './components/playlistSelector/playlistSelector.css';
+import './components/logoHeader/logoHeader.css';
 
 
 class App extends React.Component {
@@ -79,7 +83,7 @@ class App extends React.Component {
         <div className="drumMachine">
           <div className='divHeaderControls'>
             <div className='divHeader'>
-              <OnOff parOnOff={this.state.onOff} parChangeOnOff={this.changeOnOff}>{this.state.onOff}</OnOff>
+              <PowerOnOff parOnOff={this.state.onOff} parChangeOnOff={this.changeOnOff}>{this.state.onOff}</PowerOnOff>
               <LogoHeader></LogoHeader>
             </div>
             <div className="Controls">
@@ -87,8 +91,8 @@ class App extends React.Component {
                <PlayListSelector parOnOff={this.state.onOff} playList='BANK 1' changePlaylist={this.changePlayList} playListActive={this.state.playList}></PlayListSelector>
                <PlayListSelector parOnOff={this.state.onOff} playList='BANK 2' changePlaylist={this.changePlayList} playListActive={this.state.playList}></PlayListSelector>
               </div>
+              <Display playlist={this.state.playList} keyPressed={this.state.keyPressed} firstPlayList={this.firstPlayList} secondPlayList={this.secondPlayList} parVolume={this.state.volume} parOnOff={this.state.onOff}></Display>
               <VolumeSlider parOnOff={this.state.onOff} propMuted={this.state.muted} vol={this.state.volume} muteVolume={this.muteVolume} parVolume={this.state.volume} changeVol={this.volumeHandler}></VolumeSlider>
-              <DrumVisualizer playlist={this.state.playList} keyPressed={this.state.keyPressed} firstPlayList={this.firstPlayList} secondPlayList={this.secondPlayList} parVolume={this.state.volume} parOnOff={this.state.onOff}></DrumVisualizer>
             </div>
           </div>   
           <div className="Grid" id="drum-machine">
