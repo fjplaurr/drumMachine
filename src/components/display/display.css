@@ -18,4 +18,5 @@
   box-shadow: 0.2rem 0.2rem 0.3rem black;
   box-sizing: border-box;
   min-height: 5rem;
+  padding: 0.3rem;
 }

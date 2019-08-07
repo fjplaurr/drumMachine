@@ -10,6 +10,7 @@
     box-shadow: 0.12rem 0.12rem 0.3rem black;
     font-size: 1.5rem;
     padding: 0.5rem;
+    border-radius: 1rem;
 }
 
 .butPlayList:first-child{
