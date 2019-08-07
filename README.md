@@ -1,4 +1,4 @@
-# Markdown Previewer
+# Drum Machine
 
 This is the third React project of the Front-End challenges from freeCodeCamp.com
 
