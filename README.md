@@ -1,8 +1,6 @@
 # Drum Machine
 
-This is the third React project of the Front-End challenges from freeCodeCamp.com
-
-It is a Web app built with React.js that allows the user to play a Drum Machine with different sounds and voices.
+This is a Web app built with React.js that allows users to play a Drum Machine with different sounds and voices.
 
 
 ## Getting Started
@@ -13,7 +11,7 @@ If you would rather run the App in your own computer, then follow this steps pro
 - Download the project from (https://github.com/fjplaurr/drumMachine) by pressing the green button "Clone or download".
 - Unzip the file downloaded.
 - Open a Command Line Interface and go to the root file of the project (It is called drumMachine).
-- Type in the Command Line Interface: 'npm install'. An error will occur if you do not have npm installed in your computer. You can donwload it from here (https://nodejs.org/es/download/).
+- Type in the Command Line Interface: 'npm install'. An error will occur if you do not have npm installed in your computer. If so, download Node.js from here (https://nodejs.org/es/download/).
 - Wait for the installation to finish.
 - When finished, type in the Command Line Interface: 'npm start'.
 A tab in your default web browser should open in port 3000 and the App should be working now.
@@ -22,15 +20,15 @@ A tab in your default web browser should open in port 3000 and the App should be
 ### Prerequisites
 
 Things you need to be installed to run this app:
-* npm (https://nodejs.org/es/download/)
+* Node.js (https://nodejs.org/es/download/)
 
 
 ## Built With
 
-* [React.js](https://es.reactjs.org/) - The web framework used
+* [React.js](https://es.reactjs.org/) - Framework
 * [npm](https://www.npmjs.com/) - Dependency Management
 
 
-## Authors
+## Author
 
-* **Fran Urrutia** - [fjplaurr](https://github.com/fjplaurr)
+* **Fran Plaza Urrutia** - [fjplaurr](https://github.com/fjplaurr)
