@@ -2,6 +2,8 @@
 
 This is a Web app built with React.js that allows users to play a Drum Machine with different sounds and voices.
 
+It combines React.js with CSS3 features like Flexbox and Grid Layout.
+
 
 ## Getting Started
 
