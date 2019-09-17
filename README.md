@@ -9,7 +9,7 @@ It combines React.js with CSS3 features like Flexbox and Grid Layout.
 
 There are several ways to run the App. The easiest one is to check this link: (https://codepen.io/fjplaurr/pen/GVQbQe).
 
-If you would rather run the App in your own computer, then follow this steps provided below:
+If you would rather run the App in your own computer, then follow the steps provided below:
 - Download the project from (https://github.com/fjplaurr/drumMachine) by pressing the green button "Clone or download".
 - Unzip the file downloaded.
 - Open a Command Line Interface and go to the root file of the project (It is called drumMachine).
@@ -33,4 +33,4 @@ Things you need to be installed to run this app:
 
 ## Author
 
-* **Fran Plaza Urrutia** - [fjplaurr](https://github.com/fjplaurr)
+* **Francisco Javier Plaza Urrutia** - [fjplaurr](https://github.com/fjplaurr)
