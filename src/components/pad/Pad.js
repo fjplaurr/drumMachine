@@ -1,13 +1,22 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
 
-const Pad = (props)=>{
-  return(
-    <button id={props.code} onClick={props.sendKey} className={props.keyActive === props.parLetter && props.parOnOff? 'drum-pad drumOn drumActivated': !props.parOnOff? 'drum-pad drumOff': 'drum-pad drumOn'} value={props.parLetter}> {props.parLetter}
-      <audio src={props.parSound} className="clip" id={props.parLetter}></audio> 
+const Pad = (props) => {
+  const { code, sendKey, keyActive, parLetter, parSound, onoff} = props;
+  return (
+    <button id={code} onClick={sendKey} className={keyActive === parLetter && onoff ?
+      'drum-pad drumOn drumActivated' : !onoff ? 'drum-pad drumOff' : 'drum-pad drumOn'} value={parLetter}> {parLetter}
+      <audio src={parSound} className="clip" id={parLetter}></audio>
     </button>
   );
 }
 
 
-export default Pad;
+function mapStateToProps (state) {
+  return {
+    onoff: state.onoff
+  }
+}
+
+export default connect(mapStateToProps)(Pad);

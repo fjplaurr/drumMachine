@@ -1,6 +1,39 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import changePlayList from '../../redux/actions/changePlayList';
+import store from '../../redux/store';
 
 
-const PlaylistSelector = (props) => <button className={`butPlayList ${props.parOnOff && props.playList===props.playListActive?'plListActive': props.parOnOff && props.playList!==props.playListActive? 'plListDisabled':''}`} onClick={props.changePlaylist}>{props.playList}</button>
+class PlaylistSelector extends React.Component {
+    constructor(props) {
+        super(props);
+        this.clickPlayList = this.clickPlayList.bind(this);
+    }
 
-export default PlaylistSelector;
+    clickPlayList(event) {
+        this.props.changePlayList(event.currentTarget.innerHTML);
+        console.log(store.getState());
+    }
+
+    render() {
+        const { onoff, playList, playListProp } = this.props;
+        return (
+            <button className={`butPlayList ${onoff && playList === playListProp ? 'plListActive' : onoff && playList !== playListProp ? 'plListDisabled' : ''}`} onClick={this.clickPlayList}>
+                {playList}
+            </button >
+        )
+    }
+}
+
+function mapStateToProps(state) {
+    return {
+        onoff: state.onoff,
+        playListProp: state.playList
+    }
+}
+
+const mapDispatchToProps = {
+    changePlayList
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PlaylistSelector);
