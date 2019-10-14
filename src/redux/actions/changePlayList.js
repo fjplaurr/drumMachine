@@ -7,5 +7,4 @@ const changePlayList = playListName => {
     }
 }
 
-
 export default changePlayList;

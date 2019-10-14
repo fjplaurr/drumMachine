@@ -3,7 +3,6 @@ import onoff from './reducers/onoff';
 import volume from './reducers/volume';
 import playList from './reducers/playList';
 
-
 const reducer = combineReducers({
     onoff, volume, playList
 })

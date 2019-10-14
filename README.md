@@ -27,8 +27,9 @@ Things you need to be installed to run this app:
 
 ## Built With
 
-* [React.js](https://es.reactjs.org/) - Framework
-* [npm](https://www.npmjs.com/) - Dependency Management
+* [React.js](https://es.reactjs.org) - Framework
+* [Redux](https://redux.js.org) - State Management
+* [npm](https://www.npmjs.com) - Dependency Management
 
 
 ## Author

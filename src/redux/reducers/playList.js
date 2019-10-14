@@ -7,7 +7,6 @@ function playList(state = 'CLASSIC', action) {
         default:
             return state;
     }
-
 }
 
 export default playList;
