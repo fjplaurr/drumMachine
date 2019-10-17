@@ -1,51 +1,62 @@
-.drum-pad{
-    cursor: pointer;
-    height: 5rem;
-    text-align: center;
-    padding: 0px;
-    background-color: var(--blackColor);
-    outline: none;
-    border: 0.1rem solid var(--darkGrayColor);
-    color: var(--lightGrayColor);
-    font-family: 'Orbitron', sans-serif;
-    font-size: 2rem;
-    border-radius: 1rem;
+.drum-pad {
+  cursor: pointer;
+  height: 5rem;
+  text-align: center;
+  padding: 0px;
+  background-color: rgb(10, 10, 10);
+  background-color: var(--blackColor);
+  outline: none;
+  border: 0.1rem solid rgb(50, 50, 50);
+  border: 0.1rem solid var(--darkGrayColor);
+  color: rgb(80, 80, 80);
+  color: var(--lightGrayColor);
+  font-family: "Orbitron", sans-serif;
+  font-size: 2rem;
+  border-radius: 1rem;
 }
-  
-.drumOff{
+
+.drumOff {
   box-shadow: 0.12rem 0.12rem 0.3rem black;
   transition: box-shadow 1s;
 }
 
-.drum-pad.drumOn:nth-child(3n+1){
+.drum-pad.drumOn:nth-child(3n + 1) {
+  box-shadow: 0.12rem 0.12rem 0.3rem black, 0px 0px 0.4rem 0.04rem rgb(255, 90, 255);
   box-shadow: 0.12rem 0.12rem 0.3rem black, 0px 0px 0.4rem 0.04rem var(--padFirstColor);
   transition: box-shadow 1s;
 }
 
-.drum-pad.drumOn.drumActivated:nth-child(3n+1){
+.drum-pad.drumOn.drumActivated:nth-child(3n + 1) {
   box-shadow: 0.12rem 0.12rem 0.3rem black, 0px 0px 1.2rem 0.12rem var(--padFirstColor);
+  color: rgb(255, 90, 255);
   color: var(--padFirstColor);
   transition: box-shadow 0s;
 }
 
-.drum-pad.drumOn:nth-child(3n+2){
+.drum-pad.drumOn:nth-child(3n + 2) {
+  box-shadow: 0.12rem 0.12rem 0.3rem black, 0px 0px 0.4rem 0.04rem rgb(50, 200, 255);
   box-shadow: 0.12rem 0.12rem 0.3rem black, 0px 0px 0.4rem 0.04rem var(--padSecondColor);
   transition: box-shadow 1s;
 }
 
-.drum-pad.drumOn.drumActivated:nth-child(3n+2){
+.drum-pad.drumOn.drumActivated:nth-child(3n + 2) {
+  box-shadow: 0.12rem 0.12rem 0.3rem black, 0px 0px 1.2rem 0.12rem rgb(50, 200, 255);
   box-shadow: 0.12rem 0.12rem 0.3rem black, 0px 0px 1.2rem 0.12rem var(--padSecondColor);
+  color: rgb(50, 200, 255);
   color: var(--padSecondColor);
   transition: box-shadow 0s;
 }
 
-.drum-pad.drumOn:nth-child(3n+3){
-  box-shadow: 0.12rem 0.12rem 0.3rem black,0px 0px 0.4rem 0.04rem var(--padThirdColor);
+.drum-pad.drumOn:nth-child(3n + 3) {
+  box-shadow: 0.12rem 0.12rem 0.3rem black, 0px 0px 0.4rem 0.04rem rgb(255, 80, 110);
+  box-shadow: 0.12rem 0.12rem 0.3rem black, 0px 0px 0.4rem 0.04rem var(--padThirdColor);
   transition: box-shadow 1s;
 }
 
-.drum-pad.drumActivated.drumOn:nth-child(3n+3){
+.drum-pad.drumActivated.drumOn:nth-child(3n + 3) {
+  box-shadow: 0.12rem 0.12rem 0.3rem black, 0px 0px 1.2rem 0.12rem rgb(255, 80, 110);
   box-shadow: 0.12rem 0.12rem 0.3rem black, 0px 0px 1.2rem 0.12rem var(--padThirdColor);
+  color: rgb(255, 80, 110);
   color: var(--padThirdColor);
   transition: box-shadow 0s;
 }

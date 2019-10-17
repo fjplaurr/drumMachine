@@ -2,7 +2,9 @@
   outline:none;
   cursor: pointer;
   text-shadow: 0 0 0.1rem;   
+  background-color: rgb(10,10,10);
   background-color: var(--blackColor);
+  border: 0.1rem solid rgb(50,50,50);
   border: 0.1rem solid var(--darkGrayColor);
   height: 3rem;
   width: 3rem;
@@ -13,12 +15,15 @@
 }
   
 .powerOn{
+  color: rgb(50, 200, 100);
   color: var(--powerOnColor);
+  box-shadow: 0px 0px 0.4rem 0.04rem rgb(50, 200, 100);
   box-shadow: 0px 0px 0.4rem 0.04rem var(--powerOnColor);
   transition: box-shadow 1s, color 1s;
 }
   
 .powerOff{
+  color: rgb(50,50,50);
   color: var(--darkGrayColor);
   box-shadow: none;
   transition: box-shadow 1s, color 1s;

@@ -7,10 +7,12 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border: solid rgb(10,10,10);
   border: solid var(--blackColor);
   border-width: 0.3rem 0.5rem;
+  outline: 0.1rem solid rgb(50,50,50);
   outline: 0.1rem solid var(--darkGrayColor);
-  background: linear-gradient(to bottom right, var(--screenDarkGreenColor), var(--screenLightGreenColor));
+  background: linear-gradient(to bottom right, rgb(30, 45, 30), rgb(45,60,45));
   font-family: 'Orbitron', sans-serif;
   font-size: 1.5rem;
   text-align: center;

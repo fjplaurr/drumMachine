@@ -16,8 +16,6 @@ html, body, #root{
   --blackColor: rgb(10, 10, 10);  
   --darkGrayColor: rgb(50,50,50);
   --lightGrayColor: rgb(80,80,80); 
-  --screenLightGreenColor: rgb(45,60,45);
-  --screenDarkGreenColor: rgb(30, 45, 30);
   --powerOnColor: rgb(50, 200, 100);
   --whiteColor: rgb(230, 230, 230);
 } 

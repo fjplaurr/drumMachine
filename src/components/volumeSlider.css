@@ -1,4 +1,5 @@
 .iconVolumeOff {
+  color: rgb(10,10,10);
   color: var(--blackColor);
   cursor: pointer;
   text-shadow: none;
@@ -8,8 +9,10 @@
 }
 
 .iconVolumeOn {
+  color: rgb(10,10,10);
   color: var(--blackColor);
   cursor: pointer;
+  text-shadow: 0px 0px 0.1rem rgb(50, 200, 255);
   text-shadow: 0px 0px 0.1rem var(--padSecondColor);
   transition: text-shadow 1s;
   font-size: 2rem;
@@ -46,23 +49,28 @@ input[type="range"]:focus {
 input[type="range"]::-webkit-slider-runnable-track {
   height: 0.4rem;
   cursor: pointer;
+  background: rgb(10,10,10);
   background: var(--blackColor);
   border-radius: 0.5rem;
+  border: 0.1rem solid rgb(50,50,50);
   border: 0.1rem solid var(--darkGrayColor);
   box-shadow: 0.12rem 0.12rem 1.2rem black;
   transition: box-shadow 1s;
 }
 
 input[type="range"].sliderOn::-webkit-slider-runnable-track {
+  box-shadow: 0.12rem 0.12rem 1.2rem black, 0px 0px 0.2rem 0.02rem rgb(50, 200, 255);
   box-shadow: 0.12rem 0.12rem 1.2rem black, 0px 0px 0.2rem 0.02rem var(--padSecondColor);
   transition: box-shadow 1s;
 }
 
 input[type="range"]::-webkit-slider-thumb {
+  border: 0.06rem solid rgb(50,50,50);
   border: 0.06rem solid var(--darkGrayColor);
   border-radius: 0.5rem;
   height: 1.4rem;
   width: 0.7rem;
+  background: rgb(80,80,80);
   background: var(--lightGrayColor);
   cursor: pointer;
   -webkit-appearance: none;
@@ -76,16 +84,19 @@ input[type="range"]::-moz-range-track {
   box-shadow: 0.12rem 0.12rem 1.2rem black;
   background: #000000;
   border-radius: 0.5rem;
+  border: 0.05rem solid rgb(50,50,50);
   border: 0.05rem solid var(--darkGrayColor);
   transition: box-shadow 1s;
 }
 
 input[type="range"].sliderOn::-moz-range-track {
+  box-shadow: 0.12rem 0.12rem 1.2rem black, 0px 0px 0.2rem 0.02rem rgb(50, 200, 255);
   box-shadow: 0.12rem 0.12rem 1.2rem black, 0px 0px 0.2rem 0.02rem var(--padSecondColor);
   transition: box-shadow 1s;
 }
 
 input[type="range"]::-moz-range-thumb {
+  border: 0.05rem solid rgb(50,50,50);
   border: 0.05rem solid var(--darkGrayColor);
   border-radius: 0.5rem;
   background: #ffffac;
@@ -93,6 +104,7 @@ input[type="range"]::-moz-range-thumb {
   height: 1.4rem;
   width: 0.7rem;
   box-shadow: 0.24rem 0.24rem 1.2rem black;
+  background-color: rgb(80,80,80);
   background-color: var(--lightGrayColor);
 }
 
@@ -107,12 +119,14 @@ input[type="range"]::-ms-track {
 }
 
 input[type="range"].sliderOn::-ms-track {
+  box-shadow: 0.12rem 0.12rem 1.2rem black, 0px 0px 0.2rem 0.02rem rgb(50, 200, 255);
   box-shadow: 0.12rem 0.12rem 1.2rem black, 0px 0px 0.2rem 0.02rem var(--padSecondColor);
   transition: box-shadow 1s;
 }
 
 input[type="range"]::-ms-fill-lower {
   background: #000000;
+  border: 0.05rem solid rgb(50,50,50);
   border: 0.05rem solid var(--darkGrayColor);
   border-radius: 0.5rem;
   box-shadow: 0.12rem 0.12rem 1.2rem black;
@@ -120,6 +134,7 @@ input[type="range"]::-ms-fill-lower {
 
 input[type="range"]::-ms-fill-upper {
   background: #000000;
+  border: 0.05rem solid rgb(50,50,50);
   border: 0.05rem solid var(--darkGrayColor);
   border-radius: 0.5rem;
   box-shadow: 0.12rem 0.12rem 1.2rem black;

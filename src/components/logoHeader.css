@@ -1,9 +1,11 @@
-.headerLogo{
-    font-size: 1.5rem;
-    margin: 0px 0px 0px 1rem;
-    color: var(--padThirdColor);
+.headerLogo {
+  font-size: 1.5rem;
+  margin: 0px 0px 0px 1rem;
+  color: rgb(255, 80, 110);
+  color: var(--padThirdColor);
 }
 
-.headerLogo > span{
-    color: var(--whiteColor);
+.headerLogo > span {
+  color: rgb(230, 230, 230);
+  color: var(--whiteColor);
 }

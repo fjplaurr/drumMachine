@@ -1,9 +1,12 @@
 .butPlayList{
+    background-color: rgb(10,10,10);
     background-color: var(--blackColor);
     outline: none;
+    border: 0.1rem solid rgb(50,50,50);
     border: 0.1rem solid var(--darkGrayColor);
     cursor: pointer;
     text-align: center;
+    color: rgb(80,80,80);
     color: var(--lightGrayColor);
     font-family: 'Orbitron', sans-serif;
     transition: box-shadow 1s, color 1s;
@@ -22,7 +25,9 @@
 }
 
 .butPlayList.plListActive{
+    box-shadow: 0.12rem 0.12rem 0.3rem black, 0px 0px 0.3rem 0.02rem rgb(50,200,255);
     box-shadow: 0.12rem 0.12rem 0.3rem black, 0px 0px 0.3rem 0.02rem var(--padSecondColor);
+    color: rgb(50,200,255);
     color: var(--padSecondColor);
     transition: box-shadow 1s, color 1s;
 }
