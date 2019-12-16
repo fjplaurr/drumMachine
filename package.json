@@ -1,4 +1,5 @@
 {
+  "homepage": "http://fjplaurr.github.io/drumMachine",
   "name": "drum-machine",
   "version": "0.1.0",
   "private": true,
@@ -12,6 +13,8 @@
     "redux": "^4.0.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -30,5 +33,8 @@
       "last 1 safari version",
       "ie 11"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^2.1.1"
   }
 }
